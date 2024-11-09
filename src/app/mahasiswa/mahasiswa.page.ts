@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { logoIonic } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-mahasiswa',
@@ -15,7 +17,13 @@ export class MahasiswaPage implements OnInit {
   jurusan: any;
   modalEdit: any;
 
-  constructor(private api: ApiService, private modal: ModalController) {}
+  constructor(
+    private api: ApiService,
+    private modal: ModalController,
+    private alert: AlertController
+  ) {
+    addIcons({ logoIonic });
+  }
 
   ngOnInit() {
     this.getMahasiswa();
@@ -48,6 +56,37 @@ export class MahasiswaPage implements OnInit {
     } else {
       console.log('gagal tambah mahasiswa karena masih ada data yg kosong');
     }
+  }
+
+  async konfirmasiHapus({
+    id,
+    nama,
+    jurusan,
+  }: {
+    id: number;
+    nama: string;
+    jurusan: string;
+  }) {
+    const alert = await this.alert.create({
+      header: 'Hapus',
+      message: `Apakah anda yakin ingin menghapus data Mahasiswa dengan nama ${nama} dari jurusan ${jurusan}?`,
+      buttons: [
+        {
+          text: 'Batal',
+          role: 'cancel',
+          handler: () => {},
+        },
+        {
+          text: 'Hapus',
+          role: 'confirm',
+          handler: () => {
+            this.hapusMahasiswa(id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   hapusMahasiswa(id: any) {
