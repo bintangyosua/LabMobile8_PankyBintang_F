@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { AlertController, ModalController } from '@ionic/angular';
+import { logoIonic } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-mahasiswa',
@@ -19,7 +21,9 @@ export class MahasiswaPage implements OnInit {
     private api: ApiService,
     private modal: ModalController,
     private alert: AlertController
-  ) {}
+  ) {
+    addIcons({ logoIonic });
+  }
 
   ngOnInit() {
     this.getMahasiswa();
