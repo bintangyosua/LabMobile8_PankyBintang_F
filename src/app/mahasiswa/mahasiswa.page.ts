@@ -81,6 +81,7 @@ export class MahasiswaPage implements OnInit {
           role: 'confirm',
           handler: () => {
             this.hapusMahasiswa(id);
+            return;
           },
         },
       ],
@@ -100,6 +101,8 @@ export class MahasiswaPage implements OnInit {
         console.log('gagal');
       },
     });
+
+    return;
   }
 
   editMahasiswa() {
