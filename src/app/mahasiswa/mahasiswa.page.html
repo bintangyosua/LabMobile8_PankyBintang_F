@@ -4,6 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- button tambah -->
+<ion-card>
+  <ion-button (click)="openModalTambah(true)" expand="block"
+    >Tambah Mahasiswa</ion-button
+  >
+</ion-card>
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -20,17 +27,14 @@
       <ion-button expand="block" (click)="openModalEdit(true,item.id)"
         >Edit</ion-button
       >
-      <ion-button color="danger" slot="end" (click)="hapusMahasiswa(item.id)"
+      <ion-button
+        id="hapus-mahasiswa"
+        color="danger"
+        slot="end"
+        (click)="konfirmasiHapus({id: item.id, nama: item.nama, jurusan: item.jurusan})"
         >Hapus</ion-button
       >
     </ion-item>
-  </ion-card>
-
-  <!-- button tambah -->
-  <ion-card>
-    <ion-button (click)="openModalTambah(true)" expand="block"
-      >Tambah Mahasiswa</ion-button
-    >
   </ion-card>
 
   <!-- modal tambah -->
