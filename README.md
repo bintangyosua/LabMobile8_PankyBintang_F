@@ -7,6 +7,8 @@ Shift Baru: F
 Shift Lama: D
 ```
 
+CRUD CRUD CRUD
+
 ## Table of Contents
 
 - [Tugas 8 Praktikum Pemrograman Mobile](#tugas-8-praktikum-pemrograman-mobile)
